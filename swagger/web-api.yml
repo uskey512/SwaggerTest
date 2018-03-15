@@ -21,7 +21,7 @@ tags:
 paths:
   /inventory:
     get:
-      tags:
+      tags:  
       - developers
       summary: searches inventory
       operationId: searchInventory
