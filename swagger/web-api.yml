@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: This is a simple API
-  version: "base"
+  version: "1.0.0"
   title: Simple Inventory API
   # put the contact info for your development or API team
   contact:
@@ -26,9 +26,7 @@ paths:
       summary: searches inventory
       operationId: searchInventory
       description: |
-        Description 1.0.1
-        2.0.0 ですよー
-        変更済み
+        修正
       produces:
       - application/json
       parameters:
