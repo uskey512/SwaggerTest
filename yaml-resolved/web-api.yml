@@ -1,132 +1,125 @@
----
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "This is a simple API"
-  version: "1.0.0"
-  title: "Simple Inventory API"
+  description: This is a simple API
+  version: "2.0.0_base"
+  title: Simple Inventory API
+  # put the contact info for your development or API team
   contact:
-    email: "you@your-company.com"
+    email: you@your-company.com
+
   license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/uskey512/SwaggerTest/1.0.0"
-tags:
-- name: "admins"
-  description: "Secured Admin-only calls"
-- name: "developers"
-  description: "Operations available to regular developers"
-schemes:
-- "https"
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html 
+
+# tags are used for organizing operations
+tags: 
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+
 paths:
   /inventory:
     get:
       tags:
-      - "developers"
-      summary: "searches inventory"
-      description: "Description\n"
-      operationId: "searchInventory"
+      - developers
+      summary: searches inventory
+      operationId: searchInventory
+      description: |
+        Description 1.0.1
+        2.0.0 ですよー
+        変更済み
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "searchString"
-        in: "query"
-        description: "pass an optional search string for looking up inventory"
+      - in: query
+        name: searchString
+        description: pass an optional search string for looking up inventory
         required: false
-        type: "string"
-      - name: "skip"
-        in: "query"
-        description: "number of records to skip for pagination"
-        required: false
-        type: "integer"
+        type: string
+      - in: query
+        name: skip
+        description: number of records to skip for pagination
+        type: integer
+        format: int32
         minimum: 0
-        format: "int32"
-      - name: "limit"
-        in: "query"
-        description: "maximum number of records to return"
-        required: false
-        type: "integer"
+      - in: query
+        name: limit
+        description: maximum number of records to return
+        type: integer
+        format: int32
+        minimum: 0
         maximum: 50
-        minimum: 0
-        format: "int32"
       responses:
         200:
-          description: "search results matching criteria"
+          description: search results matching criteria
           schema:
-            type: "array"
+            type: array
             items:
-              $ref: "#/definitions/InventoryItem"
+              $ref: '#/definitions/InventoryItem'
         400:
-          description: "bad input parameter"
+          description: bad input parameter
     post:
       tags:
-      - "admins"
-      summary: "adds an inventory item"
-      description: "Adds an item to the system"
-      operationId: "addInventory"
+      - admins
+      summary: adds an inventory item
+      operationId: addInventory
+      description: Adds an item to the system
       consumes:
-      - "application/json"
+      - application/json
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - in: "body"
-        name: "inventoryItem"
-        description: "Inventory item to add"
-        required: false
+      - in: body
+        name: inventoryItem
+        description: Inventory item to add
         schema:
-          $ref: "#/definitions/InventoryItem"
+          $ref: '#/definitions/InventoryItem'
       responses:
         201:
-          description: "item created"
+          description: item created
         400:
-          description: "invalid input, object invalid"
+          description: invalid input, object invalid
         409:
-          description: "an existing item already exists"
+          description: an existing item already exists
 definitions:
   InventoryItem:
-    type: "object"
+    type: object
     required:
-    - "id"
-    - "manufacturer"
-    - "name"
-    - "releaseDate"
+    - id
+    - name
+    - manufacturer
+    - releaseDate
     properties:
       id:
-        type: "string"
-        format: "uuid"
-        example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
       name:
-        type: "string"
-        example: "Widget Adapter"
+        type: string
+        example: Widget Adapter
       releaseDate:
-        type: "string"
-        format: "int32"
-        example: "2016-08-29T09:12:33.001Z"
+        type: string
+        format: int32
+        example: 2016-08-29T09:12:33.001Z
       manufacturer:
-        $ref: "#/definitions/Manufacturer"
-    example:
-      releaseDate: "2016-08-29T09:12:33.001Z"
-      name: "Widget Adapter"
-      id: "d290f1ee-6c54-4b01-90e6-d701748f0851"
-      manufacturer:
-        phone: "408-867-5309"
-        name: "ACME Corporation"
-        homePage: "https://www.acme-corp.com"
+        $ref: '#/definitions/Manufacturer'
   Manufacturer:
     required:
-    - "name"
+    - name
     properties:
       name:
-        type: "string"
-        example: "ACME Corporation"
+        type: string
+        example: ACME Corporation
       homePage:
-        type: "string"
-        format: "url"
-        example: "https://www.acme-corp.com"
+        type: string
+        format: url
+        example:  https://www.acme-corp.com
       phone:
-        type: "string"
-        example: "408-867-5309"
-    example:
-      phone: "408-867-5309"
-      name: "ACME Corporation"
-      homePage: "https://www.acme-corp.com"
+        type: string
+        example: 408-867-5309
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /uskey512/SwaggerTest/1.0.0
+schemes:
+ - https
