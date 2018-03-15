@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: This is a simple API
-  version: "2.0.0_base"
+  version: "base"
   title: Simple Inventory API
   # put the contact info for your development or API team
   contact:
@@ -120,6 +120,8 @@ definitions:
         example: 408-867-5309
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
-basePath: /uskey512/SwaggerTest/1.0.0
+# basePath: /uskey512/SwaggerTest/1.0.0
 schemes:
  - https
+# Added by API Auto Mocking Plugin
+basePath: /uskey512/d_web-api/base
