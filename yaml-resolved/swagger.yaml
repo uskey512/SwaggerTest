@@ -24,8 +24,7 @@ paths:
       tags:
       - "developers"
       summary: "searches inventory"
-      description: "By passing in the appropriate options, you can search for\navailable\
-        \ inventory in the system\n"
+      description: "Description\n"
       operationId: "searchInventory"
       produces:
       - "application/json"
