@@ -4,7 +4,7 @@ about: Describe this issue template's purpose here.
 title: ''
 labels: ''
 assignees: ''
-projects: SwaggerTest/1
+projects: uskey512/SwaggerTest/1
 
 ---
 
